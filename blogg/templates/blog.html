@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Blog</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <a href="{% url 'blog.create' %}", class="btn btn-primary">Add Blog</a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Nama Kategori</th>
+            <th>Author</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+          {% for item in blogg %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.nama_kategori }}</td>
+            <td>{{ item.author }}</td>
+            <td>
+              {% comment %} <a href="{% url 'blog.edit' item.id %}" , class="btn btn-primary">Edit</a>
+              <a href="{% url 'delete' item.id %}" , class="btn btn-danger">Delete</a> {% endcomment %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
